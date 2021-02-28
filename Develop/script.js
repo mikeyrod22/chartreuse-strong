@@ -38,8 +38,7 @@ generateBtn.addEventListener("click", writePassword);
 // 2. present series of prompts that generate when button is clicked
 // 3. ask length of password (8 to 128 characters)
 // 4. ask which character types will be used (lowercase, uppercase, numeric, and/or special characters)
-// 5. validate input once all prompts are answered (at least one character type required)
-// 6. generates password in accordance with user input
-// 7. display the generated password on the page
-// 8. update README (incluse screenshots of deployed application)
+// 5. generates password in accordance with user input
+// 6. display the generated password on the page
+// 7. update README (incluse screenshots of deployed application)
 
