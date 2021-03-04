@@ -1,6 +1,6 @@
 // Assignment code here
 
-// returns valid password length
+// returns password length between 8 and 128 characters
 function passwordLengthPrompt() {
   let passwordLength = window.prompt('How many characters would you like your password to have? (password must be between 8 and 128 characters long)');
   passwordLength = Number(passwordLength);
@@ -11,18 +11,42 @@ function passwordLengthPrompt() {
   
   // invalid input
   } else {
-    window.alert('Invalid input. Please try again.');
+    window.alert('Error: Invalid input. Please try again.');
     passwordLengthPrompt();
   }
 }
 
+// returns array with character types selected
+function characterTypesConfirm() {
+  let hasLowercase = window.confirm("Would you like to include lowercase letters? Select 'OK' for yes or 'Cancel' for no.");
+  let hasUppercase = window.confirm("Would you like to include uppercase letters? Select 'OK' for yes or 'Cancel' for no.");
+  let hasNumbers = window.confirm("Would you like to include numbers? Select 'OK' for yes or 'Cancel' for no.");
+  let hasSpecials = window.confirm("Would you like to include special characters? Select 'OK' for yes or 'Cancel' for no.");
+  
+  // array created and populated with user input
+  characterTypesArray = [hasLowercase, hasUppercase, hasNumbers, hasSpecials];
+  
+  // invalid input
+  if ((hasLowercase === false) && (hasUppercase === false) && (hasNumbers === false) && (hasSpecials === false)) {
+    window.alert('Error: No character types included. Please include at least one character type.');
+    characterTypesConfirm();
+  
+  // valid input
+  } else {
+    console.log(
+      `includes lowercase letters: ${hasLowercase}
+      \nincludes uppercase letters: ${hasUppercase}
+      \nincludes numbers: ${hasNumbers}
+      \nincludes special characters: ${hasSpecials}`);
+  }
+}
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
   passwordLengthPrompt();
-  
+  characterTypesConfirm();
   // (starter) var password = generatePassword();
   // (starter) var passwordText = document.querySelector("#password");
   // (starter) passwordText.value = password;
