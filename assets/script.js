@@ -11,16 +11,18 @@ function passwordLengthPrompt() {
   
   // invalid input
   } else {
-    window.alert('Invalid input. Please try again');
+    window.alert('Invalid input. Please try again.');
     passwordLengthPrompt();
   }
 }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
 // Write password to the #password input
 function writePassword() {
   passwordLengthPrompt();
+  
   // (starter) var password = generatePassword();
   // (starter) var passwordText = document.querySelector("#password");
   // (starter) passwordText.value = password;
