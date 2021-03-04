@@ -3,7 +3,7 @@
 // returns password length between 8 and 128 characters
 function passwordLengthPrompt() {
   let passwordLength = window.prompt('How many characters would you like your password to have? (password must be between 8 and 128 characters long)');
-  passwordLength = Number(passwordLength);
+  passwordLength = parseInt(Number(passwordLength));
   
   // valid input
   if (passwordLength >= 8 && passwordLength <= 128) {
