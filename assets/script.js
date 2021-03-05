@@ -8,8 +8,7 @@ function passwordLengthPrompt() {
   // valid input
   if (passwordLength >= 8 && passwordLength <= 128) {
     console.log(`password length: ${passwordLength}`);
-  
-  // invalid input
+    // invalid input
   } else {
     window.alert('Error: Invalid input. Please try again.');
     passwordLengthPrompt();
@@ -40,18 +39,29 @@ function characterTypesConfirm() {
       \nincludes special characters: ${hasSpecials}`);
   }
 }
-// Get references to the #generate element
-const generateBtn = document.querySelector("#generate");
+
+// returns generated password
+function generatePassword() {
+  
+}
 
 // Write password to the #password input
 function writePassword() {
+  // determine length
   passwordLengthPrompt();
+  // determine character types used
   characterTypesConfirm();
-  // (starter) var password = generatePassword();
-  // (starter) var passwordText = document.querySelector("#password");
-  // (starter) passwordText.value = password;
+  // generate password
+  generatePassword();
+  var password = generatePassword();
+  // write password on page
+  passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 
+
+// Get references to the #generate element
+const generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
