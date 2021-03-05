@@ -1,18 +1,84 @@
 // Assignment code here
+let passwordLength;
+let characterTypesArray;
+let hasLowercase;
+let hasUppercase;
+let hasNumbers;
+let hasSpecials;
+let characterTypesString = '';
+let password = '';
+let passwordText;
 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+// returns password length between 8 and 128 characters
+function passwordLengthPrompt() {
+  passwordLength = window.prompt('How many characters would you like your password to have? (password must be between 8 and 128 characters long)');
+  passwordLength = parseInt(Number(passwordLength));
+  
+  // valid input
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    console.log(`password length: ${passwordLength}`);
+    // invalid input
+  } else {
+    window.alert('Error: Invalid input. Please try again.');
+    passwordLengthPrompt();
+  }
 }
 
+// returns array with character types selected
+function characterTypesConfirm() {
+  hasLowercase = window.confirm("Would you like to include lowercase letters? Select 'OK' for yes or 'Cancel' for no.");
+  hasUppercase = window.confirm("Would you like to include uppercase letters? Select 'OK' for yes or 'Cancel' for no.");
+  hasNumbers = window.confirm("Would you like to include numbers? Select 'OK' for yes or 'Cancel' for no.");
+  hasSpecials = window.confirm("Would you like to include special characters? Select 'OK' for yes or 'Cancel' for no.");
+  
+  // array created and populated with user input
+  characterTypesArray = [hasLowercase, hasUppercase, hasNumbers, hasSpecials];
+  
+  // invalid input
+  if ((hasLowercase === false) && (hasUppercase === false) && (hasNumbers === false) && (hasSpecials === false)) {
+    window.alert('Error: No character types included. Please include at least one character type.');
+    characterTypesConfirm();
+  
+  // valid input
+  } else {
+    console.log(
+      `includes lowercase letters: ${hasLowercase}
+      \nincludes uppercase letters: ${hasUppercase}
+      \nincludes numbers: ${hasNumbers}
+      \nincludes special characters: ${hasSpecials}`);
+  }
+}
+
+// returns generated password
+function generatePassword() {
+  characterTypesString = '';
+  if (hasLowercase) {characterTypesString += 'abcdefghijklmnopqrstuvwxyz';}
+  if (hasUppercase) {characterTypesString += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';}
+  if (hasNumbers) {characterTypesString += '0123456789';}
+  if (hasSpecials) {characterTypesString += "' !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; characterTypesString += '"';}
+  for (var i = 1; i <= passwordLength; i++) {
+    password += characterTypesString.charAt(Math.floor(Math.random() * characterTypesString.length +1));
+  }
+  console.log(`password: ${password}`);
+}
+
+// Write password to the #password input
+  function writePassword() {
+    // determine length with prompt
+    passwordLengthPrompt();
+    // determine character types used with confirms
+    characterTypesConfirm();
+    // generate password according to user input
+    generatePassword();
+    // find password element
+    passwordText = document.querySelector("#password");
+    // write password on page
+    passwordText.value = password;
+  }
+  
+
+// Get references to the #generate element
+const generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -41,4 +107,3 @@ generateBtn.addEventListener("click", writePassword);
 // 5. generates password in accordance with user input
 // 6. display the generated password on the page
 // 7. update README (incluse screenshots of deployed application)
-
