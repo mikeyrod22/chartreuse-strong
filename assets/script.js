@@ -45,7 +45,7 @@ function generatePassword() {
   if (hasNumbers) {characterTypesString += '0123456789';}
   if (hasSpecials) {characterTypesString += "' !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; characterTypesString += '"';}
   for (var i = 1; i <= passwordLength; i++) {
-    password += characterTypesString.charAt(Math.floor(Math.random() * characterTypesString.length +1));
+    password += characterTypesString.charAt(Math.floor(Math.random() * characterTypesString.length));
   }
   console.log(`password: ${password}`);
   console.log('I hope you enjoyed this password generating experience! - Michael')
