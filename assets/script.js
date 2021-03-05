@@ -1,8 +1,10 @@
 // Assignment code here
+let passwordLength;
+let characterTypesArray;
 
 // returns password length between 8 and 128 characters
 function passwordLengthPrompt() {
-  let passwordLength = window.prompt('How many characters would you like your password to have? (password must be between 8 and 128 characters long)');
+  passwordLength = window.prompt('How many characters would you like your password to have? (password must be between 8 and 128 characters long)');
   passwordLength = parseInt(Number(passwordLength));
   
   // valid input
@@ -90,4 +92,3 @@ generateBtn.addEventListener("click", writePassword);
 // 5. generates password in accordance with user input
 // 6. display the generated password on the page
 // 7. update README (incluse screenshots of deployed application)
-
