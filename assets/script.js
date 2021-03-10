@@ -40,10 +40,19 @@ function characterTypesConfirm() {
 function generatePassword() {
   characterTypesString = '';
   password = '';
-  if (hasLowercase) {characterTypesString += 'abcdefghijklmnopqrstuvwxyz';}
-  if (hasUppercase) {characterTypesString += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';}
-  if (hasNumbers) {characterTypesString += '0123456789';}
-  if (hasSpecials) {characterTypesString += "' !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; characterTypesString += '"';}
+  if (hasLowercase) {
+    characterTypesString += 'abcdefghijklmnopqrstuvwxyz';
+  }
+  if (hasUppercase) {
+    characterTypesString += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  }
+  if (hasNumbers) {
+    characterTypesString += '0123456789';
+  }
+  if (hasSpecials) {
+    characterTypesString += "' !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; 
+    characterTypesString += '"';
+  }
   for (var i = 1; i <= passwordLength; i++) {
     password += characterTypesString.charAt(Math.floor(Math.random() * characterTypesString.length));
   }
